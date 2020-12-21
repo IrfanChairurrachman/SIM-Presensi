@@ -1,5 +1,11 @@
 # SIM PRESENSI KELOMPOK 3
 
+## Update (21/12/2020)
+
+Menambahkan register dan login menggunakan laravel jetstream. login dan register menggunakan email.
+
+lihat `routes/web.php` untuk route. dan, `resources/views` untuk bagian tampilan.
+
 ## TODO
 
 - Fork project ini
