@@ -6,6 +6,12 @@ Menambahkan register dan login menggunakan laravel jetstream. login dan register
 
 lihat `routes/web.php` untuk route. dan, `resources/views` untuk bagian tampilan.
 
+bagian tampilan register dan login berada di `resources/views/auth`.
+
+## Update (4/1/2021)
+
+tampilan mahasiswa route `/` dan post akan redirect ke `/` juga.
+
 ## TODO
 
 - Fork project ini
