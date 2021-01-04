@@ -37,6 +37,18 @@ class AbsenceController extends Controller
     public function store(Request $request)
     {
         //
+        $absence = new Absence;
+        $absence->nim = $request->nim;
+        $absence->matkul = $request->matkul;
+        $absence->fakultas = $request->fakultas;
+        // dd($absence->nim);
+        // dd($absence);
+        // return dd($request);
+        // save to db
+        $absence->save();
+        // return $request;
+
+        return redirect('/');
     }
 
     /**

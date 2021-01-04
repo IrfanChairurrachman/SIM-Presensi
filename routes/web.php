@@ -18,7 +18,7 @@ use App\Http\Controllers\AbsenceController;
 // });
 
 Route::get('/', [AbsenceController::class, 'index']);
-Route::post('/', [AbsenceController::class, 'index']);
+Route::post('/', [AbsenceController::class, 'store']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
