@@ -1,8 +1,13 @@
 @extends('layouts.main')
 
-@section('title', 'MOOC')
+@section('title', 'Presensi')
 
 @section('container')
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 <h1 class="mt-3">Absen</h1>
 
 <form method="POST" action="/">

@@ -18,6 +18,12 @@ class AbsenceController extends Controller
         return view('index');
     }
 
+    public function adminindex()
+    {
+        $absences = Absence::all();
+        return view('absencedash', compact('absences'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +54,7 @@ class AbsenceController extends Controller
         $absence->save();
         // return $request;
 
-        return redirect('/');
+        return redirect('/')->with('status', 'Absen Tercatat!');
     }
 
     /**
