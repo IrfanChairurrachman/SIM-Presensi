@@ -19,7 +19,7 @@
             <button type="submit" class="btn btn-info">Edit absence</button>
           </form>
           <form action="/dashboard/{{ $absence->id }}" method="POST" class="d-inline">
-            @method('delete')
+            <!-- @method('delete') -->
             @csrf
             <button type="submit" class="btn btn-danger">Delete absence</button>
           </form>

@@ -100,5 +100,8 @@ class AbsenceController extends Controller
     public function destroy($id)
     {
         //
+        // return dd($id);
+        Absence::destroy($id);
+        return redirect('/dashboard')->with('status', 'Absence Deleted!');
     }
 }
