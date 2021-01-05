@@ -25,4 +25,5 @@ Route::post('/', [AbsenceController::class, 'store']);
 // })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AbsenceController::class, 'adminindex'])->name('dashboard');
-Route::middleware(['auth:sanctum', 'verified'])->post('/dashboard/{id}', [AbsenceController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/{id}', [AbsenceController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/{absence}/edit', [AbsenceController::class, 'edit']);
