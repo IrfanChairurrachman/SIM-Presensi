@@ -5,7 +5,7 @@
 @section('container')
 <h1 class="mt-3">Edit</h1>
 
-<form method="POST" action="/dashboard">
+<form method="POST" action="/dashboard/{{$absence->id}}">
     @method('patch')
     @csrf
     <div class="form-group">
