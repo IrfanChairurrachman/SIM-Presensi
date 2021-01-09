@@ -62,9 +62,14 @@ class AbsenceController extends Controller
         // $absence->fakultas = $request->fakultas;
         
         // $absence->save();
-        printf("Now: %s", Carbon::now('+07:00')->toTimeString());
-        $dt = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai);
-        printf("\n %s", $dt->toTimeString());
+        $now = Carbon::now('+07:00')->toTimeString();
+        
+        $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
+        $selesai = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
+        
+        printf("\n %s", $now);
+        printf("\n %s", $mulai);
+        printf("\n %s", $selesai);
         // dd($dt);
         // return redirect('/')->with('status', 'Anggap aja data masuk!');
     }
