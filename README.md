@@ -24,6 +24,20 @@ tutorial: [tutorial kontribusi ke repositori public](!https://www.petanikode.com
 
 - [tutorial setup laravel setelah clone dari github](https://medium.com/angkringan/cara-clone-project-laravel-dari-git-bb2dd403dde3)
 
+## Setelah Clone, Hubungkan dengan Database
+
+Hubungkan dengan database, dan jalankan migrate agar tabel yang telah ditentukan terbuat di database.
+
+jalankan
+
+`php artisan migrate`
+
+atau
+
+`php artisan migrate:refresh`
+
+kemudian cek database apakah sudah ada tabel `absences`, `courses`, dan `students`.
+
 ## Tutorial Git Lengkap
 
 - [Tutorial lengkap git dari dasar](https://www.petanikode.com/tutorial/git/)
