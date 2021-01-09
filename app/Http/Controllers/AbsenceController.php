@@ -20,8 +20,11 @@ class AbsenceController extends Controller
 
     public function adminindex()
     {
-        $absences = Absence::all();
+        // $absences = Absence::all();
+        $absences = [];
         return view('absencedash', compact('absences'));
+
+        // return view('absencedash');
     }
 
     /**
@@ -43,18 +46,14 @@ class AbsenceController extends Controller
     public function store(Request $request)
     {
         //
-        $absence = new Absence;
-        $absence->nim = $request->nim;
-        $absence->matkul = $request->matkul;
-        $absence->fakultas = $request->fakultas;
-        // dd($absence->nim);
-        // dd($absence);
-        // return dd($request);
-        // save to db
-        $absence->save();
-        // return $request;
-
-        return redirect('/')->with('status', 'Absen Tercatat!');
+        // $absence = new Absence;
+        // $absence->nim = $request->nim;
+        // $absence->matkul = $request->matkul;
+        // $absence->fakultas = $request->fakultas;
+        
+        // $absence->save();
+        
+        return redirect('/')->with('status', 'Anggap aja data masuk!');
     }
 
     /**
@@ -77,8 +76,9 @@ class AbsenceController extends Controller
     public function edit(Absence $absence)
     {
         //
-        // return dd($absence->nim);
-        return view('edit', compact('absence'));
+        // return view('edit', compact('absence'));
+
+        return view('edit');
     }
 
     /**
@@ -91,13 +91,13 @@ class AbsenceController extends Controller
     public function update(Request $request, Absence $absence)
     {
         //
-        Absence::where('id', $absence->id)->update([
-            'nim' => $request->nim,
-            'matkul' => $request->matkul,
-            'fakultas' => $request->fakultas
-        ]);
+        // Absence::where('id', $absence->id)->update([
+        //     'nim' => $request->nim,
+        //     'matkul' => $request->matkul,
+        //     'fakultas' => $request->fakultas
+        // ]);
 
-        return redirect('/dashboard')->with('status', 'Absence Updated!');
+        return redirect('/dashboard')->with('status', 'Anggap aja terupdate');
     }
 
     /**
@@ -109,8 +109,9 @@ class AbsenceController extends Controller
     public function destroy($id)
     {
         //
-        // return dd($id);
-        Absence::destroy($id);
-        return redirect('/dashboard')->with('status', 'Absence Deleted!');
+        
+        // Absence::destroy($id);
+
+        return redirect('/dashboard')->with('status', 'Anggap aja terhapus!');
     }
 }
