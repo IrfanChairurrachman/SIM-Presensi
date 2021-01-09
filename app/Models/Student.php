@@ -9,8 +9,11 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'nim';
+
     public function absences()
     {
         return $this->hasMany(Absence::class, 'student_nim', 'nim');
     }
+
 }

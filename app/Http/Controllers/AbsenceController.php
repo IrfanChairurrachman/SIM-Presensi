@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absence;
+use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AbsenceController extends Controller
 {
@@ -15,6 +18,7 @@ class AbsenceController extends Controller
     public function index()
     {
         //
+        // printf("Now: %s", Carbon::now());
         return view('index');
     }
 
@@ -46,14 +50,23 @@ class AbsenceController extends Controller
     public function store(Request $request)
     {
         //
+        $student = Student::find($request->nim);
+        $course = Course::find($request->matkul);
+
+        if($student->password != $request->password){
+            return redirect('/')->with('status', 'Password Salah!');
+        }
         // $absence = new Absence;
         // $absence->nim = $request->nim;
         // $absence->matkul = $request->matkul;
         // $absence->fakultas = $request->fakultas;
         
         // $absence->save();
-        
-        return redirect('/')->with('status', 'Anggap aja data masuk!');
+        printf("Now: %s", Carbon::now('+07:00')->toTimeString());
+        $dt = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai);
+        printf("\n %s", $dt->toTimeString());
+        // dd($dt);
+        // return redirect('/')->with('status', 'Anggap aja data masuk!');
     }
 
     /**

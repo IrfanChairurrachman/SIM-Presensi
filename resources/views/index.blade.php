@@ -19,7 +19,7 @@
       <input class="form-control" name="password" placeholder="Password" type="password">
   </div>
   <select name="matkul" class="form-control">
-      <option value="sim" selected>SIM</option>
+      <option value="1" selected>SIM</option>
   </select>
   <select name="fakultas" class="form-control">
       <option value="fst" selected>FST</option>
