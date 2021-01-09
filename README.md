@@ -20,7 +20,7 @@ jalankan
 
 `php artisan migrate`
 
-atau
+atau jika respong "Nothing to migrate", jalankan perintah di bawah:
 
 `php artisan migrate:refresh`
 
