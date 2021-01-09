@@ -15,8 +15,8 @@ class CreateAbsencesTable extends Migration
     {
         Schema::create('absences', function (Blueprint $table) {
             $table->id();
-            $table->string('nim', 11);
-            $table->foreign('nim')->references('nim')->on('students');
+            $table->string('student_nim', 11);
+            $table->foreign('student_nim')->references('nim')->on('students');
 
             $table->foreignId('course_id')->constrained();
 
