@@ -10,6 +10,8 @@ class Student extends Model
     use HasFactory;
 
     protected $primaryKey = 'nim';
+    
+    public $timestamps = false;
 
     public function absences()
     {
