@@ -67,22 +67,22 @@ class AbsenceController extends Controller
         $student = Student::find($request->nim);
         $course = Course::find($request->matkul);
         
+        // Pengaturan format waktu
         $now = Carbon::now('+07:00');
-        // $now = Carbon::createFromFormat('H:i:s', $now1);
-        
         $mulai1 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
         $selesai1 = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
-
         $mulai = Carbon::createFromFormat('H:i:s', $mulai1, '+07:00');
         $selesai = Carbon::createFromFormat('H:i:s', $selesai1, '+07:00');
-        
+        $mulai2 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai, '+07:00');
+
         if($student->password != $request->password){
             return redirect('/')->with('status', 'Password Salah!');
         }
-        else if(!$now->isSameAs('w', $mulai1)){
-            printf("not same day");
-        } else if(!$now->between($mulai, $selesai, true)){
-            dd('Not In Between');
+        elseif(!$now->isSameAs('w', $mulai2)){
+            return redirect('/')->with('status', 'Bukan hari jadwal matkul!');
+        } 
+        elseif(!$now->between($mulai, $selesai, true)){
+            return redirect('/')->with('status', 'Bukan jam jadwal matkul!');
         }
 
         // $absence = new Absence;
@@ -92,13 +92,7 @@ class AbsenceController extends Controller
         
         // $absence->save();
         
-        
-        printf("\n %s", $now);
-        printf("\n %s", $mulai);
-        printf("\n %s", $selesai);
-
-        // dd($dt);
-        // return redirect('/')->with('status', 'Anggap aja data masuk!');
+        return redirect('/')->with('status', 'Anggap aja data masuk!');
     }
 
     /**

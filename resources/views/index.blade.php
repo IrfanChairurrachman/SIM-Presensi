@@ -13,16 +13,17 @@
 <form method="POST" action="/">
   @csrf
   <div class="form-group">
-      <input id="nim" autocomplete="off" autofocus class="form-control" name="nim" placeholder="NIM" type="text">
+    <input id="nim" autocomplete="off" autofocus class="form-control" name="nim" placeholder="NIM" type="text">
   </div>
   <div class="form-group">
-      <input class="form-control" name="password" placeholder="Password" type="password">
+    <input class="form-control" name="password" placeholder="Password" type="password">
   </div>
   <select name="matkul" class="form-control">
-      <option value="1" selected>SIM</option>
+    <option value="1">SIM</option>
+    <option value="2">Manrisk</option>
   </select>
   <select name="fakultas" class="form-control">
-      <option value="fst" selected>FST</option>
+    <option value="fst" selected>FST</option>
   </select>
   <button type="submit" class="btn btn-primary">Konfirmasi</button>
 </form>
