@@ -106,9 +106,10 @@ class AbsenceController extends Controller
     public function edit(Absence $absence)
     {
         //
-        // return view('edit', compact('absence'));
+        $courses = Course::all();
+        return view('edit', compact('absence', 'courses'));
 
-        return view('edit');
+        // return view('edit');
     }
 
     /**
@@ -121,11 +122,11 @@ class AbsenceController extends Controller
     public function update(Request $request, Absence $absence)
     {
         //
-        // Absence::where('id', $absence->id)->update([
-        //     'nim' => $request->nim,
-        //     'matkul' => $request->matkul,
-        //     'fakultas' => $request->fakultas
-        // ]);
+        Absence::where('id', $absence->id)->update([
+            'student_nim' => $request->nim,
+            'course_id' => $request->matkul,
+            'fakultas' => $request->fakultas
+        ]);
 
         return redirect('/dashboard')->with('status', 'Anggap aja terupdate');
     }

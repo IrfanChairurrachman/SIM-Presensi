@@ -9,10 +9,12 @@
     @method('patch')
     @csrf
     <div class="form-group">
-        <input id="nim" autocomplete="off" autofocus class="form-control" name="nim" placeholder="NIM" type="text" value="{{ $absence->nim }}">
+        <input id="nim" autocomplete="off" autofocus class="form-control" name="nim" placeholder="NIM" type="text" value="{{ $absence->student_nim }}">
     </div>
     <select name="matkul" class="form-control">
-        <option value="sim" selected>{{$absence->matkul}}</option>
+        @foreach($courses as $course)
+        <option value="{{$course->id}}">{{$course->matkul}}</option>
+        @endforeach
     </select>
     <select name="fakultas" class="form-control">
         <option value="fst" selected>{{$absence->fakultas}}</option>
