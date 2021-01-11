@@ -140,8 +140,7 @@ class AbsenceController extends Controller
     public function destroy($id)
     {
         //
-        
-        // Absence::destroy($id);
+        Absence::destroy($id);
 
         return redirect('/dashboard')->with('status', 'Anggap aja terhapus!');
     }
