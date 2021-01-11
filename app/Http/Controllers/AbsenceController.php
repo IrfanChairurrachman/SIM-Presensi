@@ -52,7 +52,7 @@ class AbsenceController extends Controller
     {
         //
         if(!Student::find($request->nim)){
-            return redirect('/')->with('status', 'NIM Tidak Tercatat di Database!');
+            return redirect('/')->with('danger', 'NIM Tidak Tercatat di Database!');
         }
 
         $student = Student::find($request->nim);
@@ -67,13 +67,13 @@ class AbsenceController extends Controller
         $mulai2 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai, '+07:00');
 
         if($student->password != $request->password){
-            return redirect('/')->with('status', 'Password Salah!');
+            return redirect('/')->with('danger', 'Password Salah!');
         }
         elseif(!$now->isSameAs('w', $mulai2)){
-            return redirect('/')->with('status', 'Bukan Hari Jadwal Matkul!');
+            return redirect('/')->with('danger', 'Bukan Hari Jadwal Matkul!');
         } 
         elseif(!$now->between($mulai, $selesai, true)){
-            return redirect('/')->with('status', 'Bukan Jam Jadwal Matkul!');
+            return redirect('/')->with('danger', 'Bukan Jam Jadwal Matkul!');
         }
 
         $absence = new Absence;
@@ -83,7 +83,7 @@ class AbsenceController extends Controller
         
         $absence->save();
         
-        return redirect('/')->with('status', 'Anggap aja data masuk!');
+        return redirect('/')->with('status', 'Data Tercatat!');
     }
 
     /**
@@ -128,7 +128,7 @@ class AbsenceController extends Controller
             'fakultas' => $request->fakultas
         ]);
 
-        return redirect('/dashboard')->with('status', 'Anggap aja terupdate');
+        return redirect('/dashboard')->with('status', 'Data Terupdate');
     }
 
     /**
@@ -142,6 +142,6 @@ class AbsenceController extends Controller
         //
         Absence::destroy($id);
 
-        return redirect('/dashboard')->with('status', 'Anggap aja terhapus!');
+        return redirect('/dashboard')->with('status', 'Data Terhapus!');
     }
 }
