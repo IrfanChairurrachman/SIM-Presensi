@@ -18,22 +18,8 @@ class AbsenceController extends Controller
     public function index()
     {
         //
-        // printf("Now: %s", Carbon::now());
-        // $now = Carbon::now('+07:00');
-        // // $now = Carbon::createFromFormat('H:i:s', $now1);
-        // printf($now);
-
-        // $startTime = \Carbon\Carbon::createFromFormat('H:i a', '08:00 PM', '+07:00');
-        // $endTime = \Carbon\Carbon::createFromFormat('H:i a', '11:00 PM', '+07:00');
-        // $currentTime = \Carbon\Carbon::now();
-
-        // if($now->between($startTime, $endTime, true)){
-        //     dd('In Between');
-        // }else{
-        //     dd('In Not Between');
-        // }
-
-        return view('index');
+        $courses = Course::all();
+        return view('index', compact('courses'));
     }
 
     public function adminindex()
@@ -64,6 +50,10 @@ class AbsenceController extends Controller
     public function store(Request $request)
     {
         //
+        if(!Student::find($request->nim)){
+            return redirect('/')->with('status', 'NIM Tidak Tercatat di Database!');
+        }
+
         $student = Student::find($request->nim);
         $course = Course::find($request->matkul);
         
@@ -79,18 +69,18 @@ class AbsenceController extends Controller
             return redirect('/')->with('status', 'Password Salah!');
         }
         elseif(!$now->isSameAs('w', $mulai2)){
-            return redirect('/')->with('status', 'Bukan hari jadwal matkul!');
+            return redirect('/')->with('status', 'Bukan Hari Jadwal Matkul!');
         } 
         elseif(!$now->between($mulai, $selesai, true)){
-            return redirect('/')->with('status', 'Bukan jam jadwal matkul!');
+            return redirect('/')->with('status', 'Bukan Jam Jadwal Matkul!');
         }
 
-        // $absence = new Absence;
-        // $absence->nim = $request->nim;
-        // $absence->matkul = $request->matkul;
-        // $absence->fakultas = $request->fakultas;
+        $absence = new Absence;
+        $absence->student_nim = $request->nim;
+        $absence->course_id = $request->matkul;
+        $absence->fakultas = $request->fakultas;
         
-        // $absence->save();
+        $absence->save();
         
         return redirect('/')->with('status', 'Anggap aja data masuk!');
     }

@@ -9,6 +9,8 @@ class Absence extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_nim', 'nim');
