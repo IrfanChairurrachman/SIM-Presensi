@@ -3,16 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('container')
-  @if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-  @endif
   <h2>Daftar Mahasiswa</h2>
   @foreach($absences as $absence)
     <div class="list-group my-3">
         <a href="{{$absence->id}}" class="list-group-item list-group-item-action">
-            {{$absence->nim}}, {{$absence->matkul}}, {{$absence->fakultas}}
+            {{$absence->student_nim}}, {{$absence->course->matkul}}, {{$absence->fakultas}}, {{$absence->tercatat}}
         </a>
         <ul class="list-group list-group-horizontal-lg">
           <form action="/dashboard/{{ $absence->id }}/edit" method="GET" class="d-inline">

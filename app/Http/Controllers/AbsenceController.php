@@ -24,8 +24,9 @@ class AbsenceController extends Controller
 
     public function adminindex()
     {
-        // $absences = Absence::all();
-        $absences = [];
+        $absences = Absence::all();
+        // $absences = [];
+        // dd($absences);
         return view('absencedash', compact('absences'));
 
         // return view('absencedash');
