@@ -27,7 +27,7 @@ class AbsenceController extends Controller
         $absences = Absence::all();
         // $absences = [];
         // dd($absences);
-        return view('absencedash', compact('absences'));
+        return view('newdash', compact('absences'));
 
         // return view('absencedash');
     }
