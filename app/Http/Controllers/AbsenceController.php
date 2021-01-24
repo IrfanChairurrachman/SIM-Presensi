@@ -19,7 +19,7 @@ class AbsenceController extends Controller
     {
         //
         $courses = Course::all();
-        return view('index', compact('courses'));
+        return view('index1', compact('courses'));
     }
 
     public function adminindex()
@@ -50,7 +50,7 @@ class AbsenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         if(!Student::find($request->nim)){
             return redirect('/')->with('danger', 'NIM Tidak Tercatat di Database!');
         }
