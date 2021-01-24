@@ -19,7 +19,7 @@ class AbsenceController extends Controller
     {
         //
         $courses = Course::all();
-        return view('index1', compact('courses'));
+        return view('index', compact('courses'));
     }
 
     public function adminindex()
