@@ -12,7 +12,7 @@
                     <h4>Profile Visit</h4>
                 </div>
                 <div class="card-body">
-                <form class="form form-vertical" method="POST" action="/dashboard/{{$student->nim}}">
+                <form class="form form-vertical" method="POST" action="/dashboard/mhs/{{$student->nim}}">
                     @method('patch')
                     @csrf
                         <div class="form-body">

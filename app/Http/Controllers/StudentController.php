@@ -87,9 +87,20 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
         //
+        Student::where('nim', $student->nim)->update([
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'jurusan' => $request->jurusan,
+            'angkatan' => $request->angkatan,
+            'nohp' => $request->nohp,
+            'alamat' => $request->alamat,
+            'password' => $request->password
+        ]);
+
+        return redirect('/dashboard/mhs')->with('status', 'Data Terupdate');
     }
 
     /**
@@ -101,5 +112,8 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+        Student::destroy($id);
+
+        return redirect('/dashboard/mhs')->with('danger', 'Data Terhapus!');
     }
 }

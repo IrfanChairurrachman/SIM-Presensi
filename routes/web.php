@@ -36,12 +36,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mk/isi', [Cours
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/dashboard/absen/isi', [AbsenceController::class, 'adminstore']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/dashboard/mhs/isi', [StudentController::class, 'store']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/dashboard/mk/isi', [CourseController::class, 'store']);
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mhs/{student}', [StudentController::class, 'edit']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mhs/{student}', [StudentController::class, 'edit']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/{absence}', [AbsenceController::class, 'edit']);
 
 Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/{id}', [AbsenceController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/mhs/{id}', [StudentController::class, 'destroy']);
 
 Route::middleware(['auth:sanctum', 'verified'])->patch('/dashboard/{absence}', [AbsenceController::class, 'update']);
-Route::middleware(['auth:sanctum', 'verified'])->patch('/dashboard/{absence}', [AbsenceController::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->patch('/dashboard/mhs/{student}', [StudentController::class, 'update']);
 

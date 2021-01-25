@@ -42,6 +42,16 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->mulai);
+
+        $course = new Course;
+        $course->matkul = $request->matkul;
+        $course->mulai = $request->mulai;
+        $course->selesai = $request->selesai;
+        
+        $course->save();
+        
+        return redirect('/dashboard/mk')->with('status', 'Data Tercatat!');
     }
 
     /**
