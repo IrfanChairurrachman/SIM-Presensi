@@ -53,7 +53,7 @@
 
                         <li class="sidebar-item @yield('matkul')">
                             <a href="/dashboard/mk" class='sidebar-link'>
-                                <i class="bi bi-person-badge-fill"></i>
+                                <i class="bi bi-collection-fill"></i>
                                 <span>Mata Kuliah</span>
                             </a>
                         </li>

@@ -97,6 +97,43 @@ class AbsenceController extends Controller
         return redirect('/')->with('status', 'Data Tercatat!');
     }
 
+    public function adminstore(Request $request)
+    {
+        
+        if(!Student::find($request->nim)){
+            return redirect('/dashboard/absen/isi')->with('danger', 'NIM Tidak Tercatat di Database!');
+        }
+
+        $student = Student::find($request->nim);
+        $course = Course::find($request->matkul);
+        
+        // Pengaturan format waktu
+        $now = Carbon::now('+07:00');
+        $mulai1 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
+        $selesai1 = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
+        $mulai = Carbon::createFromFormat('H:i:s', $mulai1, '+07:00');
+        $selesai = Carbon::createFromFormat('H:i:s', $selesai1, '+07:00');
+        $mulai2 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai, '+07:00');
+
+        if($student->password != $request->password){
+            return redirect('/dashboard/absen/isi')->with('danger', 'Password Salah!');
+        }
+        elseif(!$now->isSameAs('w', $mulai2)){
+            return redirect('/dashboard/absen/isi')->with('danger', 'Bukan Hari Jadwal Matkul!');
+        } 
+        elseif(!$now->between($mulai, $selesai, true)){
+            return redirect('/dashboard/absen/isi')->with('danger', 'Bukan Jam Jadwal Matkul!');
+        }
+
+        $absence = new Absence;
+        $absence->student_nim = $request->nim;
+        $absence->course_id = $request->matkul;
+        
+        $absence->save();
+        
+        return redirect('/dashboard')->with('status', 'Data Tercatat!');
+    }
+
     /**
      * Display the specified resource.
      *

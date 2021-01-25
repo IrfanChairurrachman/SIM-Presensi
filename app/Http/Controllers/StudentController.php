@@ -43,6 +43,18 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //
+        $student = new Student;
+        $student->nim = $request->nim;
+        $student->nama = $request->nama;
+        $student->jurusan = $request->jurusan;
+        $student->angkatan = $request->angkatan;
+        $student->nohp = $request->nohp;
+        $student->alamat = $request->alamat;
+        $student->password = $request->password;
+        
+        $student->save();
+
+        return redirect('/dashboard/mhs')->with('status', 'Data Tercatat!');
     }
 
     /**
@@ -62,9 +74,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
         //
+        return view('editmhs', compact('student'));
     }
 
     /**

@@ -14,8 +14,8 @@
                     <h4>Profile Visit</h4>
                 </div>
                 <div class="card-body">
-                    <form class="form form-vertical" method="POST" action="/dashboard">
-                    @csrf
+                    <form class="form form-vertical" method="POST" action="/dashboard/absen/isi">
+                        @csrf
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-12">
@@ -52,15 +52,6 @@
                                             @foreach($courses as $course)
                                             <option value="{{$course->id}}">{{$course->matkul}}</option>
                                             @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="">Fakultas</label>
-                                        <select class="choices form-select" name="fakultas">
-                                            <option value="fst">Sains dan Teknologi</option>
-                                            <option value="fupi">Filsafat dan Pemikiran Islam</option>
                                         </select>
                                     </div>
                                 </div>
