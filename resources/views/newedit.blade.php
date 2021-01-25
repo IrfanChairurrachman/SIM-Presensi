@@ -2,6 +2,8 @@
 
 @section('title', 'Dashboard')
 
+@section('form', 'active')
+
 @section('container')
     <div class="row">
         <div class="col-12">
@@ -10,7 +12,8 @@
                     <h4>Profile Visit</h4>
                 </div>
                 <div class="card-body">
-                <form class="form form-vertical" method="POST" action="/">
+                <form class="form form-vertical" method="POST" action="/dashboard/{{$absence->id}}">
+                    @method('patch')
                     @csrf
                         <div class="form-body">
                             <div class="row">

@@ -30,6 +30,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AbsenceContr
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mhs', [StudentController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mk', [CourseController::class, 'index']);
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/absen/isi', [AbsenceController::class, 'create']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mhs/isi', [StudentController::class, 'create']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mk/isi', [CourseController::class, 'create']);
+
 Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/{id}', [AbsenceController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/{absence}', [AbsenceController::class, 'edit']);
 Route::middleware(['auth:sanctum', 'verified'])->patch('/dashboard/{absence}', [AbsenceController::class, 'update']);

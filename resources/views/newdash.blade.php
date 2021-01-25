@@ -2,6 +2,8 @@
 
 @section('title', 'Dashboard')
 
+@section('dashboard', 'active')
+
 @section('container')
     <div class="row">
         <div class="col-12">
@@ -31,6 +33,13 @@
                                 <span class="badge">
                                 <form action="/dashboard/{{$absence->id}}" method="GET" class="form">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>
+                                </form>
+                                </span>
+                                <span class="badge">
+                                <form action="/dashboard/{{$absence->id}}" method="POST" class="form">
+                                @method('delete')
+                                @csrf
+                                    <button type="submit" class="btn btn-danger me-1 mb-1">Delete</button>
                                 </form>
                                 </span>
                             </td>

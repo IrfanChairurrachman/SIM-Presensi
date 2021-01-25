@@ -51,7 +51,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item @yield('mahasiswa')">
+                        <li class="sidebar-item @yield('matkul')">
                             <a href="/dashboard/mk" class='sidebar-link'>
                                 <i class="bi bi-person-badge-fill"></i>
                                 <span>Mata Kuliah</span>
@@ -61,17 +61,17 @@
                         <li class="sidebar-item @yield('isi') has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Form Elements</span>
+                                <span>Isi Data</span>
                             </a>
-                            <ul class="submenu ">
+                            <ul class="submenu @yield('isi')">
                                 <li class="submenu-item @yield('isiAbsen')">
-                                    <a href="form-element-input.html">Absen</a>
+                                    <a href="/dashboard/absen/isi">Absen</a>
                                 </li>
-                                <li class="submenu-item yield('isiMhs')">
-                                    <a href="form-element-input-group.html">Mahasiswa</a>
+                                <li class="submenu-item @yield('isiMhs')">
+                                    <a href="/dashboard/mhs/isi">Mahasiswa</a>
                                 </li>
-                                <li class="submenu-item yield('isiMK')">
-                                    <a href="form-element-select.html">Mata Kuliah</a>
+                                <li class="submenu-item @yield('isiMK')">
+                                    <a href="/dashboard/mk/isi">Mata Kuliah</a>
                                 </li>
                             </ul>
                         </li>
@@ -79,7 +79,7 @@
                         <li class="sidebar-item @yield('form')">
                             <a href="form-layout.html" class='sidebar-link'>
                                 <i class="bi bi-pen-fill"></i>
-                                <span>Form Layout</span>
+                                <span>Edit</span>
                             </a>
                         </li>
 
