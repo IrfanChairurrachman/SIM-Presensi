@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AbsenceController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +27,10 @@ Route::post('/', [AbsenceController::class, 'store']);
 // })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AbsenceController::class, 'adminindex'])->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mhs', [StudentController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/mk', [CourseController::class, 'index']);
+
 Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/{id}', [AbsenceController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/{absence}', [AbsenceController::class, 'edit']);
 Route::middleware(['auth:sanctum', 'verified'])->patch('/dashboard/{absence}', [AbsenceController::class, 'update']);
+

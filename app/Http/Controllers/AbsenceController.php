@@ -32,6 +32,16 @@ class AbsenceController extends Controller
         // return view('absencedash');
     }
 
+    public function mhsindex()
+    {
+        // $absences = Absence::all();
+        // $absences = [];
+        // dd($absences);
+        // return view('newdash', compact('absences'));
+
+        return view('indexmhs');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -123,7 +133,7 @@ class AbsenceController extends Controller
     {
         //
         Absence::where('id', $absence->id)->update([
-            'student_nim' => $request->nim,
+            // 'student_nim' => $request->nim,
             'course_id' => $request->matkul,
             'fakultas' => $request->fakultas
         ]);
@@ -142,6 +152,6 @@ class AbsenceController extends Controller
         //
         Absence::destroy($id);
 
-        return redirect('/dashboard')->with('status', 'Data Terhapus!');
+        return redirect('/dashboard')->with('danger', 'Data Terhapus!');
     }
 }
