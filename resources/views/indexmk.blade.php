@@ -28,6 +28,20 @@
                             <td>{{$course->matkul}}</td>
                             <td>{{$course->mulai}}</td>
                             <td>{{$course->selesai}}</td>
+                            <td>
+                                <span class="badge">
+                                <form action="/dashboard/mk/{{$course->id}}" method="GET" class="form">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>
+                                </form>
+                                </span>
+                                <span class="badge">
+                                <form action="/dashboard/mk/{{$course->id}}" method="POST" class="form">
+                                @method('delete')
+                                @csrf
+                                    <button type="submit" class="btn btn-danger me-1 mb-1">Delete</button>
+                                </form>
+                                </span>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

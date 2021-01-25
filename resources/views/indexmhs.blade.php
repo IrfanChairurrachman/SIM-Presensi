@@ -30,6 +30,20 @@
                             <td>{{$student->jurusan}}</td>
                             <td>{{$student->angkatan}}</td>
                             <td>{{$student->nohp}}</td>
+                            <td>
+                                <span class="badge">
+                                <form action="/dashboard/mhs/{{$student->nim}}" method="GET" class="form">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>
+                                </form>
+                                </span>
+                                <span class="badge">
+                                <form action="/dashboard/mhs/{{$student->nim}}" method="POST" class="form">
+                                @method('delete')
+                                @csrf
+                                    <button type="submit" class="btn btn-danger me-1 mb-1">Delete</button>
+                                </form>
+                                </span>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
