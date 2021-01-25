@@ -17,7 +17,7 @@
                             <th>Matkul</th>
                             <th>Fakultas</th>
                             <th>Tercatat</th>
-                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +28,11 @@
                             <td>{{$absence->fakultas}}</td>
                             <td>{{$absence->tercatat}}</td>
                             <td>
-                                <span class="badge bg-success">Active</span>
+                                <span class="badge">
+                                <form action="/dashboard/{{ $absence->id }}/edit" method="GET" class="form">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>
+                                </form>
+                                </span>
                             </td>
                         </tr>
                     @endforeach
