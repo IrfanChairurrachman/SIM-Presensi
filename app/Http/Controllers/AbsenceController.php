@@ -107,7 +107,7 @@ class AbsenceController extends Controller
     {
         //
         $courses = Course::all();
-        return view('edit', compact('absence', 'courses'));
+        return view('newedit', compact('absence', 'courses'));
 
         // return view('edit');
     }

@@ -29,7 +29,7 @@
                             <td>{{$absence->tercatat}}</td>
                             <td>
                                 <span class="badge">
-                                <form action="/dashboard/{{ $absence->id }}/edit" method="GET" class="form">
+                                <form action="/dashboard/{{$absence->id}}" method="GET" class="form">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>
                                 </form>
                                 </span>
