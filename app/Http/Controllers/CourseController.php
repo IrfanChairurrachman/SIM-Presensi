@@ -7,7 +7,7 @@ use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,9 @@ class StudentController extends Controller
     public function index()
     {
         //
-        $students = Student::all();
+        $courses = Course::all();
 
-        return view('indexmhs', compact('students'));
-        // return view('indexmhs');
+        return view('indexmk', compact('courses'));
     }
 
     /**
@@ -31,7 +30,7 @@ class StudentController extends Controller
     public function create()
     {
         //
-        return view('createmhs');
+        return view('createmk');
     }
 
     /**

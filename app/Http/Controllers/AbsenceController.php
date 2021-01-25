@@ -50,6 +50,8 @@ class AbsenceController extends Controller
     public function create()
     {
         //
+        $courses = Course::all();
+        return view('createabsen', compact('courses'));
     }
 
     /**
