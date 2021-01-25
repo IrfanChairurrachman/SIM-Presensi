@@ -16,9 +16,10 @@
                     <thead>
                         <tr>
                             <th>NIM</th>
+                            <th>Nama</th>
                             <th>Matkul</th>
-                            <th>Fakultas</th>
                             <th>Tercatat</th>
+                            <th>Catatan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -26,9 +27,10 @@
                     @foreach($absences as $absence)
                         <tr>
                             <td>{{$absence->student_nim}}</td>
+                            <td>{{$absence->student->nama}}</td>
                             <td>{{$absence->course->matkul}}</td>
-                            <td>{{$absence->fakultas}}</td>
                             <td>{{$absence->tercatat}}</td>
+                            <td>{{$absence->catatan}}</td>
                             <td>
                                 <span class="badge">
                                 <form action="/dashboard/{{$absence->id}}" method="GET" class="form">
@@ -45,15 +47,6 @@
                             </td>
                         </tr>
                     @endforeach
-                        <tr>
-                            <td>Dale</td>
-                            <td>fringilla.euismod.enim@quam.ca</td>
-                            <td>0500 527693</td>
-                            <td>New Quay</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 </div>

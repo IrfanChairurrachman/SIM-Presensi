@@ -91,7 +91,6 @@ class AbsenceController extends Controller
         $absence = new Absence;
         $absence->student_nim = $request->nim;
         $absence->course_id = $request->matkul;
-        $absence->fakultas = $request->fakultas;
         
         $absence->save();
         
@@ -136,8 +135,8 @@ class AbsenceController extends Controller
         //
         Absence::where('id', $absence->id)->update([
             // 'student_nim' => $request->nim,
-            'course_id' => $request->matkul,
-            'fakultas' => $request->fakultas
+            // 'course_id' => $request->matkul,
+            'catatan' => $request->catatan
         ]);
 
         return redirect('/dashboard')->with('status', 'Data Terupdate');

@@ -17,7 +17,10 @@ class CreateStudentsTable extends Migration
             // $table->id();
             $table->string('nim', 11)->primary();
             $table->string('nama', 50);
-            $table->string('angkatan', 2);
+            $table->string('jurusan', 50);
+            $table->string('angkatan', 4);
+            $table->string('nohp', 14)->unique();
+            $table->string('alamat', 50);
             $table->string('password', 50);
         });
     }

@@ -104,15 +104,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Fakultas</label>
-                                            <select class="choices form-select" name="fakultas">
-                                                <option value="fst">Sains dan Teknologi</option>
-                                                <option value="fupi">Filsafat dan Pemikiran Islam</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit"
                                             class="btn btn-primary me-1 mb-1">Submit</button>

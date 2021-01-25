@@ -34,21 +34,25 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="">Mata Kuliah</label>
-                                        <select class="choices form-select" name="matkul">
-                                            @foreach($courses as $course)
-                                            <option value="{{$course->id}}">{{$course->matkul}}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">Nama</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control"
+                                                id="first-name-icon"
+                                                name="nama"
+                                                value="{{ $absence->student->nama }}"
+                                                disabled>
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-person"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="">Fakultas</label>
-                                        <select class="choices form-select" name="fakultas">
-                                            <option value="fst">Sains dan Teknologi</option>
-                                            <option value="fupi">Filsafat dan Pemikiran Islam</option>
+                                        <label for="">Mata Kuliah</label>
+                                        <select class="choices form-select" name="matkul" disabled>
+                                            <option value="{{$absence->course_id}}">{{$absence->course->matkul}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -72,8 +76,8 @@
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Leave a comment here"
                                             id="floatingTextarea"
-                                            name="catatan"></textarea>
-                                        <label for="floatingTextarea">Comments</label>
+                                            name="catatan">{{$absence->catatan}}</textarea>
+                                        <label for="floatingTextarea">Catatan</label>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">

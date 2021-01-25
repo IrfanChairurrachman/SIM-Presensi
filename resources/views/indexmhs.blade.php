@@ -16,14 +16,20 @@
                     <thead>
                         <tr>
                             <th>NIM</th>
-                            <th>Password</th>
+                            <th>Nama</th>
+                            <th>Jurusan</th>
+                            <th>Angkatan</th>
+                            <th>No HP</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($students as $student)
                         <tr>
                             <td>{{$student->nim}}</td>
-                            <td>{{$student->password}}</td>
+                            <td>{{$student->nama}}</td>
+                            <td>{{$student->jurusan}}</td>
+                            <td>{{$student->angkatan}}</td>
+                            <td>{{$student->nohp}}</td>
                         </tr>
                     @endforeach
                     </tbody>
