@@ -51,7 +51,7 @@ class CourseController extends Controller
         
         $course->save();
         
-        return redirect('/dashboard/mk')->with('status', 'Data Tercatat!');
+        return redirect('/dashboard/mk')->with('status', 'Mata Kuliah Ditambahkan!');
     }
 
     /**
@@ -71,9 +71,10 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Course $course)
     {
         //
+        return view('editmk', compact('course'));
     }
 
     /**
@@ -83,9 +84,16 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Course $course)
     {
         //
+        Course::where('id', $course->id)->update([
+            'matkul' => $request->matkul,
+            'mulai' => $request->mulai,
+            'selesai' => $request->selesai
+        ]);
+
+        return redirect('/dashboard/mk')->with('status', 'Mata Kuliah Terupdate');
     }
 
     /**
@@ -97,5 +105,8 @@ class CourseController extends Controller
     public function destroy($id)
     {
         //
+        Course::destroy($id);
+
+        return redirect('/dashboard/mk')->with('danger', 'Mata Kuliah Terhapus!');
     }
 }

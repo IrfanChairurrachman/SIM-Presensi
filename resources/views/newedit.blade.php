@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard')
+@section('title', 'Edit Absen')
 
 @section('form', 'active')
 
@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Profile Visit</h4>
+                    <h4>Edit Presensi</h4>
                 </div>
                 <div class="card-body">
                 <form class="form form-vertical" method="POST" action="/dashboard/{{$absence->id}}">

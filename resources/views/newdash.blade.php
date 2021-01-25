@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Profile Visit</h4>
+                    <h4>Daftar Presensi</h4>
                 </div>
                 <div class="card-body">
                 <table class="table table-striped" id="table1">

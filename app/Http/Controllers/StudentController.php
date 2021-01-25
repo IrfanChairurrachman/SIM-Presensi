@@ -54,7 +54,7 @@ class StudentController extends Controller
         
         $student->save();
 
-        return redirect('/dashboard/mhs')->with('status', 'Data Tercatat!');
+        return redirect('/dashboard/mhs')->with('status', 'Mahasiswa Ditambahkan!');
     }
 
     /**
@@ -100,7 +100,7 @@ class StudentController extends Controller
             'password' => $request->password
         ]);
 
-        return redirect('/dashboard/mhs')->with('status', 'Data Terupdate');
+        return redirect('/dashboard/mhs')->with('status', 'Mahasiswa Terupdate');
     }
 
     /**
@@ -114,6 +114,6 @@ class StudentController extends Controller
         //
         Student::destroy($id);
 
-        return redirect('/dashboard/mhs')->with('danger', 'Data Terhapus!');
+        return redirect('/dashboard/mhs')->with('danger', 'Mahasiswa Terhapus!');
     }
 }
