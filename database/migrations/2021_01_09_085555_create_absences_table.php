@@ -20,7 +20,7 @@ class CreateAbsencesTable extends Migration
 
             $table->foreignId('course_id')->constrained();
 
-            $table->string('fakultas', 30);
+            $table->text('catatan')->nullable();
 
             $table->timestamp('tercatat')->useCurrent();
         });
