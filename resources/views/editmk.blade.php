@@ -26,13 +26,13 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Mata Kuliah</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control"
+                                            <input type="text" class="form-control @error('matkul') is-invalid @enderror"
                                                 placeholder="Nama Mata Kuliah"
                                                 id="first-name-icon"
                                                 name="matkul"
                                                 value="{{$course->matkul}}">
                                             <div class="form-control-icon">
-                                                <i class="bi bi-person"></i>
+                                                <i class="bi bi-book"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -41,7 +41,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Mulai</label>
                                         <div class="position-relative">
-                                            <input type="datetime-local" class="form-control"
+                                            <input type="datetime-local" class="form-control @error('mulai') is-invalid @enderror"
                                                 id="first-name-icon"
                                                 name="mulai"
                                                 value="{{$course->mulai}}">
@@ -55,7 +55,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">Selesai</label>
                                         <div class="position-relative">
-                                            <input type="datetime-local" class="form-control"
+                                            <input type="datetime-local" class="form-control @error('selesai') is-invalid @enderror"
                                                 id="first-name-icon"
                                                 name="selesai"
                                                 value="{{$course->selesai}}">

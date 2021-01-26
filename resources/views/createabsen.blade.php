@@ -27,7 +27,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="first-name-icon">NIM</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control"
+                                            <input type="text" class="form-control @error('nim') is-invalid @enderror"
                                                 placeholder="Masukkan NIM"
                                                 id="first-name-icon"
                                                 name="nim">
@@ -41,7 +41,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="password-id-icon">Password</label>
                                         <div class="position-relative">
-                                            <input type="password" class="form-control"
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Password" id="password-id-icon"
                                                 name="password">
                                             <div class="form-control-icon">

@@ -47,6 +47,16 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nim' => 'required|max:11',
+            'nama' => 'required|max:50',
+            'jurusan' => 'required|max:50',
+            'angkatan' => 'required|max:4',
+            'nohp' => 'required|max:14',
+            'alamat' => 'required|max:50',
+            'password' => 'required|max:50'
+        ]);
+
         $student = new Student;
         $student->nim = $request->nim;
         $student->nama = $request->nama;
@@ -96,6 +106,16 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         //
+        $request->validate([
+            'nim' => 'required|max:11',
+            'nama' => 'required|max:50',
+            'jurusan' => 'required|max:50',
+            'angkatan' => 'required|max:4',
+            'nohp' => 'required|max:14',
+            'alamat' => 'required|max:50',
+            'password' => 'required|max:50'
+        ]);
+        
         Student::where('nim', $student->nim)->update([
             'nim' => $request->nim,
             'nama' => $request->nama,

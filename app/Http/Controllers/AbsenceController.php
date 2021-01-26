@@ -87,7 +87,12 @@ class AbsenceController extends Controller
      */
     public function store(Request $request)
     {
-        
+
+        $request->validate([
+            'nim' => 'required|max:11',
+            'password' => 'required|max:50'
+        ]);
+
         if(!Student::find($request->nim)){
             return redirect('/')->with('danger', 'NIM Tidak Tercatat di Database!');
         }
@@ -124,6 +129,10 @@ class AbsenceController extends Controller
 
     public function adminstore(Request $request)
     {
+        $request->validate([
+            'nim' => 'required|max:11',
+            'password' => 'required|max:50',
+        ]);
         
         if(!Student::find($request->nim)){
             return redirect('/dashboard/absen/isi')->with('danger', 'NIM Tidak Tercatat di Database!');

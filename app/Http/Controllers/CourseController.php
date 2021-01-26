@@ -61,6 +61,11 @@ class CourseController extends Controller
     {
         //
         // dd($request->mulai);
+        $request->validate([
+            'matkul' => 'required|max:30',
+            'mulai' => 'required',
+            'selesai' => 'required'
+        ]);
 
         $course = new Course;
         $course->matkul = $request->matkul;
@@ -118,6 +123,12 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         //
+        $request->validate([
+            'matkul' => 'required|max:30',
+            'mulai' => 'required',
+            'selesai' => 'required'
+        ]);
+        
         Course::where('id', $course->id)->update([
             'matkul' => $request->matkul,
             'mulai' => $request->mulai,
