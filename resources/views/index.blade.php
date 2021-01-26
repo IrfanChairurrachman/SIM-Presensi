@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
 
-    <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />
+    <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css"/>
 
     <link rel="stylesheet" href="assets/vendors/sweetalert2/sweetalert2.min.css">
 </head>
@@ -56,10 +56,11 @@
             {{ session('danger') }}
         </div>
         @endif
+        <h1>SIABMAS</h1>
         <div class="col-md-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">SIABMAS ABSENSI</h4>
+                    <h4 class="card-title">Sistem Absensi Mahasiswa</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
