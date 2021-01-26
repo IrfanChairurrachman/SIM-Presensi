@@ -17,9 +17,11 @@ class StudentController extends Controller
     public function index()
     {
         //
+        $user = auth()->user();
+
         $students = Student::all();
 
-        return view('indexmhs', compact('students'));
+        return view('indexmhs', compact('students', 'user'));
         // return view('indexmhs');
     }
 
@@ -31,7 +33,9 @@ class StudentController extends Controller
     public function create()
     {
         //
-        return view('createmhs');
+        $user = auth()->user();
+
+        return view('createmhs', compact('user'));
     }
 
     /**
@@ -77,7 +81,9 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         //
-        return view('editmhs', compact('student'));
+        $user = auth()->user();
+
+        return view('editmhs', compact('student', 'user'));
     }
 
     /**

@@ -2,6 +2,11 @@
 
 @section('title', 'Mahasiswa')
 
+@section('name')
+    <h5 class="font-bold">{{$user->name}}</h5>
+    <p class="text-muted mb-0" style="font-size:80%;">{{$user->email}}</p>
+@endsection
+
 @section('mahasiswa', 'active')
 
 @section('container')
@@ -20,6 +25,7 @@
                             <th>Jurusan</th>
                             <th>Angkatan</th>
                             <th>No HP</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +36,7 @@
                             <td>{{$student->jurusan}}</td>
                             <td>{{$student->angkatan}}</td>
                             <td>{{$student->nohp}}</td>
-                            <td>
+                            <td style="width:195px">
                                 <span class="badge">
                                 <form action="/dashboard/mhs/{{$student->nim}}" method="GET" class="form">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>

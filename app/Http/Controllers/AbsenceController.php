@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Absence;
 use App\Models\Course;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -19,27 +20,35 @@ class AbsenceController extends Controller
     {
         //
         $courses = Course::all();
+
+        
+        foreach($courses as $course){
+            $hari = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai);
+            $hari = $hari->format('l');
+
+            $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
+            $selesai = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
+
+            $result = $hari . ' ' . $mulai;
+
+            $course->mulai = $result;
+            $course->selesai = $selesai;
+        }
+
         return view('index', compact('courses'));
     }
 
     public function adminindex()
     {
+        $user = auth()->user();
+
+        // var_dump($user->email);
+
         $absences = Absence::all();
-        // $absences = [];
-        // dd($absences);
-        return view('newdash', compact('absences'));
+        
+        return view('newdash', compact('absences', 'user'));
 
         // return view('absencedash');
-    }
-
-    public function mhsindex()
-    {
-        // $absences = Absence::all();
-        // $absences = [];
-        // dd($absences);
-        // return view('newdash', compact('absences'));
-
-        return view('indexmhs');
     }
 
     /**
@@ -50,8 +59,24 @@ class AbsenceController extends Controller
     public function create()
     {
         //
+        $user = auth()->user();
+
         $courses = Course::all();
-        return view('createabsen', compact('courses'));
+
+        foreach($courses as $course){
+            $hari = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai);
+            $hari = $hari->format('l');
+
+            $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
+            $selesai = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
+
+            $result = $hari . ' ' . $mulai;
+
+            $course->mulai = $result;
+            $course->selesai = $selesai;
+        }
+
+        return view('createabsen', compact('courses', 'user'));
     }
 
     /**
@@ -103,22 +128,31 @@ class AbsenceController extends Controller
         if(!Student::find($request->nim)){
             return redirect('/dashboard/absen/isi')->with('danger', 'NIM Tidak Tercatat di Database!');
         }
-
+        
+        if(!$request->waktu){
+            $now = Carbon::now('+07:00');
+        } else{
+            $now = Carbon::createFromFormat('Y-m-d\\TH:i', $request->waktu)->toTimeString();
+            $now = Carbon::createFromFormat('H:i:s', $now, '+07:00');
+        }
+        
         $student = Student::find($request->nim);
         $course = Course::find($request->matkul);
         
         // Pengaturan format waktu
-        $now = Carbon::now('+07:00');
-        $mulai1 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
-        $selesai1 = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
-        $mulai = Carbon::createFromFormat('H:i:s', $mulai1, '+07:00');
-        $selesai = Carbon::createFromFormat('H:i:s', $selesai1, '+07:00');
-        $mulai2 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai, '+07:00');
+
+        $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
+        $selesai = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
+
+        $mulai = Carbon::createFromFormat('H:i:s', $mulai, '+07:00');
+        $selesai = Carbon::createFromFormat('H:i:s', $selesai, '+07:00');
+
+        $mulai1 = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai, '+07:00');
 
         if($student->password != $request->password){
             return redirect('/dashboard/absen/isi')->with('danger', 'Password Salah!');
         }
-        elseif(!$now->isSameAs('w', $mulai2)){
+        elseif(!$now->isSameAs('w', $mulai1) && !$request->waktu){
             return redirect('/dashboard/absen/isi')->with('danger', 'Bukan Hari Jadwal Matkul!');
         } 
         elseif(!$now->between($mulai, $selesai, true)){
@@ -154,8 +188,10 @@ class AbsenceController extends Controller
     public function edit(Absence $absence)
     {
         //
+        $user = auth()->user();
+
         $courses = Course::all();
-        return view('newedit', compact('absence', 'courses'));
+        return view('newedit', compact('absence', 'courses', 'user'));
 
         // return view('edit');
     }

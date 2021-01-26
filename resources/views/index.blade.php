@@ -99,7 +99,7 @@
                                             <label for="">Mata Kuliah</label>
                                             <select class="choices form-select" name="matkul">
                                                 @foreach($courses as $course)
-                                                <option value="{{$course->id}}">{{$course->matkul}}</option>
+                                                <option value="{{$course->id}}">{{$course->matkul}} ({{$course->mulai}} - {{$course->selesai}})</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -4,6 +4,11 @@
 
 @section('dashboard', 'active')
 
+@section('name')
+    <h5 class="font-bold">{{$user->name}}</h5>
+    <p class="text-muted mb-0" style="font-size:80%;">{{$user->email}}</p>
+@endsection
+
 @section('container')
     <div class="row">
         <div class="col-12">
@@ -31,7 +36,7 @@
                             <td>{{$absence->course->matkul}}</td>
                             <td>{{$absence->tercatat}}</td>
                             <td>{{$absence->catatan}}</td>
-                            <td>
+                            <td style="width:195px">
                                 <span class="badge">
                                 <form action="/dashboard/{{$absence->id}}" method="GET" class="form">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>

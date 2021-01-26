@@ -6,6 +6,7 @@ use App\Models\Absence;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CourseController extends Controller
 {
@@ -17,9 +18,24 @@ class CourseController extends Controller
     public function index()
     {
         //
+        $user = auth()->user();
+
         $courses = Course::all();
 
-        return view('indexmk', compact('courses'));
+        foreach($courses as $course){
+            $hari = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai);
+            $hari = $hari->format('l');
+
+            $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai)->toTimeString();
+            $selesai = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai)->toTimeString();
+
+            $result = $hari . ' ' . $mulai;
+
+            $course->mulai = $result;
+            $course->selesai = $selesai;
+        }
+
+        return view('indexmk', compact('courses', 'user'));
     }
 
     /**
@@ -30,7 +46,9 @@ class CourseController extends Controller
     public function create()
     {
         //
-        return view('createmk');
+        $user = auth()->user();
+
+        return view('createmk', compact('user'));
     }
 
     /**
@@ -74,7 +92,20 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         //
-        return view('editmk', compact('course'));
+        $user = auth()->user();
+
+        
+        $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $course->mulai);
+        $mulai = $mulai->format('Y-m-d\\TH:i');
+
+        $selesai = Carbon::createFromFormat('Y-m-d H:i:s', $course->selesai);
+        $selesai = $selesai->format('Y-m-d\\TH:i');
+
+        $course->mulai = $mulai;
+        $course->selesai = $selesai;
+        
+
+        return view('editmk', compact('course', 'user'));
     }
 
     /**

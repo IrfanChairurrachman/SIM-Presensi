@@ -77,7 +77,7 @@
                         </li>
 
                         <li class="sidebar-item @yield('form')">
-                            <a href="form-layout.html" class='sidebar-link'>
+                            <a href="#" class='sidebar-link'>
                                 <i class="bi bi-pen-fill"></i>
                                 <span>Edit</span>
                             </a>

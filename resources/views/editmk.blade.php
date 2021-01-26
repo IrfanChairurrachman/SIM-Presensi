@@ -2,6 +2,11 @@
 
 @section('title', 'Edit Mata Kuliah')
 
+@section('name')
+    <h5 class="font-bold">{{$user->name}}</h5>
+    <p class="text-muted mb-0" style="font-size:80%;">{{$user->email}}</p>
+@endsection
+
 @section('form', 'active')
 
 @section('container')
@@ -34,7 +39,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Mulai ( {{$course->mulai}} )</label>
+                                        <label for="first-name-icon">Mulai</label>
                                         <div class="position-relative">
                                             <input type="datetime-local" class="form-control"
                                                 id="first-name-icon"
@@ -48,7 +53,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="first-name-icon">Selesai ( {{$course->selesai}} )</label>
+                                        <label for="first-name-icon">Selesai</label>
                                         <div class="position-relative">
                                             <input type="datetime-local" class="form-control"
                                                 id="first-name-icon"

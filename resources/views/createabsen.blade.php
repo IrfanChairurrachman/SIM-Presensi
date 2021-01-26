@@ -2,6 +2,11 @@
 
 @section('title', 'Input Absen')
 
+@section('name')
+    <h5 class="font-bold">{{$user->name}}</h5>
+    <p class="text-muted mb-0" style="font-size:80%;">{{$user->email}}</p>
+@endsection
+
 @section('isi', 'active')
 
 @section('isiAbsen', 'active')
@@ -50,9 +55,22 @@
                                         <label for="">Mata Kuliah</label>
                                         <select class="choices form-select" name="matkul">
                                             @foreach($courses as $course)
-                                            <option value="{{$course->id}}">{{$course->matkul}}</option>
+                                            <option value="{{$course->id}}">{{$course->matkul}} ({{$course->mulai}} - {{$course->selesai}})</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">Waktu</label>
+                                        <div class="position-relative">
+                                            <input type="datetime-local" class="form-control"
+                                                id="first-name-icon"
+                                                name="waktu">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-calendar"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
